@@ -1,0 +1,18 @@
+services:
+  ml-api:
+    hostname: ml-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: ml-api:latest
+    ports:
+      - "8888:8888"
+    working_dir: /app
+    volumes:
+      - ./:/app
+    #restart: unless-stopped
+    networks:
+      - lunamat-network
+networks:
+  lunamat-network:
+    external: true
